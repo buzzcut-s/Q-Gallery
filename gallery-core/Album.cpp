@@ -1,7 +1,9 @@
 #include "Album.h"
 
-Album::Album(const QString& name) :
+#include <utility>
+
+Album::Album(QString name) :
     m_id(-1),
-    m_name(name)
+    m_name(std::move(name))
 {
 }
