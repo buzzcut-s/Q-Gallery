@@ -4,6 +4,7 @@
 #include <QSqlQuery>
 #include <QVariant>
 
+#include "DatabaseManager.h"
 #include "Picture.h"
 
 PictureDao::PictureDao(QSqlDatabase& database) :
@@ -13,7 +14,7 @@ PictureDao::PictureDao(QSqlDatabase& database) :
 
 void PictureDao::init() const
 {
-        if (!m_database.tables().contains("pictures"))
+        if (not m_database.tables().contains("pictures"))
         {
                 QSqlQuery query(m_database);
 
@@ -21,6 +22,7 @@ void PictureDao::init() const
                            + "(id INTEGER PRIMARY KEY AUTOINCREMENT, "
                            + "album_id INTEGER, "
                            + "url TEXT)");
+                DatabaseManager::debugQuery(query);
         }
 }
 
@@ -38,6 +40,8 @@ void PictureDao::addPictureInAlbum(int albumId, Picture& picture) const
         query.bindValue(":url", picture.fileUrl());
         query.exec();
 
+        DatabaseManager::debugQuery(query);
+
         picture.setId(query.lastInsertId().toInt());
         picture.setAlbumId(albumId);
 }
@@ -49,6 +53,8 @@ void PictureDao::removePicture(int id) const
         query.prepare("DELETE FROM pictures WHERE id = (:id)");
         query.bindValue(":id", id);
         query.exec();
+
+        DatabaseManager::debugQuery(query);
 }
 
 void PictureDao::removePicturesForAlbum(int albumId) const
@@ -58,4 +64,6 @@ void PictureDao::removePicturesForAlbum(int albumId) const
         query.prepare("DELETE FROM pictures WHERE album_id = (:album_id)");
         query.bindValue(":album_id", albumId);
         query.exec();
+
+        DatabaseManager::debugQuery(query);
 }

@@ -2,6 +2,8 @@
 
 #include <QDebug>
 #include <QSqlDatabase>
+#include <QSqlError>
+#include <QSqlQuery>
 
 DatabaseManager& DatabaseManager::instance()
 {
@@ -25,4 +27,17 @@ DatabaseManager::~DatabaseManager()
 {
         m_dataBase->close();
         delete m_dataBase;
+}
+
+void DatabaseManager::debugQuery(const QSqlQuery& query)
+{
+        if (query.lastError().type() == QSqlError::ErrorType::NoError)
+        {
+                qDebug() << "Query OK:" << query.lastQuery();
+        }
+        else
+        {
+                qWarning() << "Query KO:" << query.lastError().text();
+                qWarning() << "Query text:" << query.lastQuery();
+        }
 }

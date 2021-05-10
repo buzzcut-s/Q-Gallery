@@ -6,6 +6,7 @@
 #include "AlbumDao.h"
 
 class QSqlDatabase;
+class QSqlQuery;
 const QString DATABASE_FILENAME = "gallery.db";
 
 class DatabaseManager
@@ -17,6 +18,8 @@ public:
         DatabaseManager(const DatabaseManager&) = delete;
         DatabaseManager(DatabaseManager&&)      = delete;
         DatabaseManager& operator=(DatabaseManager&&) = delete;
+
+        static void debugQuery(const QSqlQuery& query);
 
 protected:
         explicit DatabaseManager(const QString& path = DATABASE_FILENAME);
