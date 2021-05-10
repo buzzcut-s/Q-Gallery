@@ -9,8 +9,8 @@
 class GALLERYCORE_EXPORT Picture
 {
 public:
-        Picture(const QString& filePath = "");
-        Picture(const QUrl& fileUrl);
+        explicit Picture(const QString& filePath = "");
+        explicit Picture(QUrl fileUrl);
 
         int  id() const;
         void setId(int id);
