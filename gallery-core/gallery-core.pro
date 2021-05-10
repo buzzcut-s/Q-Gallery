@@ -7,8 +7,10 @@ DEFINES += GALLERYCORE_LIBRARY
 CONFIG += c++17
 
 SOURCES += \
-    Album.cpp
+    Album.cpp \
+    Picture.cpp
 
 HEADERS += \
+    Picture.h \
     gallery-core_global.h \
     Album.h
