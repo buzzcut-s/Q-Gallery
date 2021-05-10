@@ -1,6 +1,8 @@
 #ifndef ALBUMDAO_H
 #define ALBUMDAO_H
 
+#include <QVector>
+
 class QSqlDatabase;
 class Album;
 
@@ -13,6 +15,7 @@ public:
         void addAlbum(Album& album) const;
         void updateAlbum(const Album& album) const;
         void removeAlbum(int id) const;
+        auto albums() const -> QVector<Album*>;
 
 private:
         QSqlDatabase& m_database;

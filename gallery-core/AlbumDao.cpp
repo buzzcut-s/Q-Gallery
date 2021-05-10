@@ -51,3 +51,20 @@ void AlbumDao::removeAlbum(int id) const
         query.bindValue(":id", id);
         query.exec();
 }
+
+auto AlbumDao::albums() const -> QVector<Album*>
+{
+        QSqlQuery query("SELECT * FROM albums", m_database);
+
+        query.exec();
+        QVector<Album*> list;
+        while (query.next())
+        {
+                auto* album = new Album();
+                album->setId(query.value("id").toInt());
+                album->setName(query.value("name").toString());
+                list.append(album);
+        }
+
+        return list;
+}
