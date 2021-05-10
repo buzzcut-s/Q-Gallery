@@ -10,12 +10,15 @@ DatabaseManager& DatabaseManager::instance()
 }
 
 DatabaseManager::DatabaseManager(const QString& path) :
-    m_dataBase(new QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE")))
+    m_dataBase(new QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE"))),
+    albumDao(*m_dataBase)
 {
         m_dataBase->setDatabaseName(path);
 
         bool openStatus = m_dataBase->open();
         qDebug() << "Database connection: " << (openStatus ? "OK" : "Error");
+
+        albumDao.init();
 }
 
 DatabaseManager::~DatabaseManager()
