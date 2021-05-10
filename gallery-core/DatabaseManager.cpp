@@ -1,5 +1,6 @@
 #include "DatabaseManager.h"
 
+#include <QDebug>
 #include <QSqlDatabase>
 
 DatabaseManager& DatabaseManager::instance()
@@ -12,7 +13,9 @@ DatabaseManager::DatabaseManager(const QString& path) :
     m_dataBase(new QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE")))
 {
         m_dataBase->setDatabaseName(path);
-        m_dataBase->open();
+
+        bool openStatus = m_dataBase->open();
+        qDebug() << "Database connection: " << (openStatus ? "OK" : "Error");
 }
 
 DatabaseManager::~DatabaseManager()

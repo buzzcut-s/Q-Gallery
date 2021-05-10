@@ -17,7 +17,7 @@ public:
         DatabaseManager& operator=(DatabaseManager&&) = delete;
 
 protected:
-        DatabaseManager(const QString& path = DATABASE_FILENAME);
+        explicit DatabaseManager(const QString& path = DATABASE_FILENAME);
         DatabaseManager& operator=(const DatabaseManager& rhs);
 
 private:
