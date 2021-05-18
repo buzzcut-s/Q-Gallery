@@ -1,11 +1,11 @@
-#include "PictureDao.h"
+#include "include/PictureDao.h"
 
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QVariant>
 
-#include "DatabaseManager.h"
-#include "Picture.h"
+#include "include/DatabaseManager.h"
+#include "include/Picture.h"
 
 PictureDao::PictureDao(QSqlDatabase& database) :
     m_database(database)

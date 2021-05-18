@@ -7,16 +7,16 @@ DEFINES += GALLERYCORE_LIBRARY
 CONFIG += c++17
 
 SOURCES += \
-    Album.cpp \
-    AlbumDao.cpp \
-    DatabaseManager.cpp \
-    Picture.cpp \
-    PictureDao.cpp
+    src/Album.cpp \
+    src/AlbumDao.cpp \
+    src/DatabaseManager.cpp \
+    src/Picture.cpp \
+    src/PictureDao.cpp
 
 HEADERS += \
-    AlbumDao.h \
-    DatabaseManager.h \
-    Picture.h \
-    PictureDao.h \
-    gallery-core_global.h \
-    Album.h
+    include/AlbumDao.h \
+    include/DatabaseManager.h \
+    include/Picture.h \
+    include/PictureDao.h \
+    include/gallery-core_global.h \
+    include/Album.h

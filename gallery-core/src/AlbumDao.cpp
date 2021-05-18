@@ -1,12 +1,12 @@
-#include "AlbumDao.h"
+#include "include/AlbumDao.h"
 
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QStringList>
 #include <QVariant>
 
-#include "Album.h"
-#include "DatabaseManager.h"
+#include "include/Album.h"
+#include "include/DatabaseManager.h"
 
 AlbumDao::AlbumDao(QSqlDatabase& database) :
     m_database(database)

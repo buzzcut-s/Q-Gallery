@@ -1,4 +1,4 @@
-#include "DatabaseManager.h"
+#include "include/DatabaseManager.h"
 
 #include <QDebug>
 #include <QSqlDatabase>
