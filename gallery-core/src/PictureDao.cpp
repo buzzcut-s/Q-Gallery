@@ -1,5 +1,8 @@
 #include "include/PictureDao.h"
 
+#include <memory>
+#include <vector>
+
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QVariant>
@@ -66,4 +69,26 @@ void PictureDao::removePicturesForAlbum(int albumId) const
         query.exec();
 
         DatabaseManager::debugQuery(query);
+}
+
+auto PictureDao::picturesForAlbum(int albumId) const -> std::unique_ptr<std::vector<std::unique_ptr<Picture>>>
+{
+        QSqlQuery query(m_database);
+
+        query.prepare("SELECT * FROM pictures WHERE album_id = (:album_id)");
+        query.bindValue(":album_id", albumId);
+        query.exec();
+
+        DatabaseManager::debugQuery(query);
+
+        auto list = std::make_unique<std::vector<std::unique_ptr<Picture>>>();
+        while (query.next())
+        {
+                auto picture = std::make_unique<Picture>();
+                picture->setId(query.value("id").toInt());
+                picture->setAlbumId(query.value("album_id").toInt());
+                picture->setFileUrl(query.value("url").toString());
+                list->push_back(std::move(picture));
+        }
+        return list;
 }

@@ -60,18 +60,20 @@ void AlbumDao::removeAlbum(int id) const
         DatabaseManager::debugQuery(query);
 }
 
-auto AlbumDao::albums() const -> QVector<Album*>
+auto AlbumDao::albums() const -> std::unique_ptr<std::vector<std::unique_ptr<Album>>>
 {
         QSqlQuery query("SELECT * FROM albums", m_database);
 
         query.exec();
-        QVector<Album*> list;
+        DatabaseManager::debugQuery(query);
+
+        auto list = std::make_unique<std::vector<std::unique_ptr<Album>>>();
         while (query.next())
         {
-                auto* album = new Album();
+                auto album = std::make_unique<Album>();
                 album->setId(query.value("id").toInt());
                 album->setName(query.value("name").toString());
-                list.append(album);
+                list->push_back(std::move(album));
         }
 
         return list;
