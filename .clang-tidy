@@ -2,12 +2,14 @@
 Checks: >
   -*,
   bugprone-*,
+  cert-*,
   clang-*,
   
   cppcoreguidelines-*,
   -cppcoreguidelines-owning-memory,
   
   google-*,
+  hicpp-*,
   misc-*,
   
   modernize-*,
