@@ -13,7 +13,7 @@
 
 class GALLERYCORE_EXPORT AlbumModel : public QAbstractItemModel
 {
-        Q_OBJECT;
+        Q_OBJECT
 
 public:
         explicit AlbumModel(QObject* parent = nullptr);
@@ -34,10 +34,9 @@ public:
         QModelIndex addAlbum(const Album& album);
 
 private:
-        bool isIndexValid(const QModelIndex& index) const;
-
-private:
         DatabaseManager&                                     m_db;
         std::unique_ptr<std::vector<std::unique_ptr<Album>>> m_albums;
+
+        bool isIndexValid(const QModelIndex& index) const;
 };
 #endif  // ALBUMMODEL_H
