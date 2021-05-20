@@ -7,6 +7,7 @@ DEFINES += GALLERYCORE_LIBRARY
 CONFIG += c++17
 
 SOURCES += \
+    src/PictureModel.cpp \
     src/AlbumModel.cpp \
     src/Album.cpp \
     src/AlbumDao.cpp \
@@ -15,6 +16,7 @@ SOURCES += \
     src/PictureDao.cpp
 
 HEADERS += \
+    include/PictureModel.h \
     include/AlbumModel.h \
     include/AlbumDao.h \
     include/DatabaseManager.h \
