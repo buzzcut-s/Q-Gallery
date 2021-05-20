@@ -26,9 +26,9 @@ public:
 
         auto addAlbum(const Album& album) -> QModelIndex;
 
-        int  rowCount(const QModelIndex& parent = QModelIndex()) const override;
-        auto data(const QModelIndex& index, int role = Qt::DisplayRole) const -> QVariant override;
-        auto roleNames() const -> QHash<int, QByteArray> override;
+        [[nodiscard]] int  rowCount(const QModelIndex& parent = QModelIndex()) const override;
+        [[nodiscard]] auto data(const QModelIndex& index, int role = Qt::DisplayRole) const -> QVariant override;
+        [[nodiscard]] auto roleNames() const -> QHash<int, QByteArray> override;
 
         bool setData(const QModelIndex& index, const QVariant& value, int role) override;
         bool removeRows(int row, int count, const QModelIndex& parent) override;
@@ -37,6 +37,6 @@ private:
         DatabaseManager&                                     m_db;
         std::unique_ptr<std::vector<std::unique_ptr<Album>>> m_albums;
 
-        bool isIndexValid(const QModelIndex& index) const;
+        [[nodiscard]] bool isIndexValid(const QModelIndex& index) const;
 };
 #endif  // ALBUMMODEL_H

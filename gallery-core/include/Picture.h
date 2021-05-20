@@ -12,14 +12,14 @@ public:
         explicit Picture(const QString& filePath = "");
         explicit Picture(QUrl fileUrl);
 
-        int  id() const;
-        void setId(int id);
+        [[nodiscard]] int id() const;
+        void              setId(int id);
 
-        int  albumId() const;
-        void setAlbumId(int albumId);
+        [[nodiscard]] int albumId() const;
+        void              setAlbumId(int albumId);
 
-        QUrl fileUrl() const;
-        void setFileUrl(const QUrl& fileUrl);
+        [[nodiscard]] auto fileUrl() const -> QUrl;
+        void               setFileUrl(const QUrl& fileUrl);
 
 private:
         int  m_id;

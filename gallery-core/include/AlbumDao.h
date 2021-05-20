@@ -13,10 +13,10 @@ public:
         explicit AlbumDao(QSqlDatabase& database);
         void init() const;
 
-        void addAlbum(Album& album) const;
-        void updateAlbum(const Album& album) const;
-        void removeAlbum(int id) const;
-        auto albums() const -> std::unique_ptr<std::vector<std::unique_ptr<Album>>>;
+        void               addAlbum(Album& album) const;
+        void               updateAlbum(const Album& album) const;
+        void               removeAlbum(int id) const;
+        [[nodiscard]] auto albums() const -> std::unique_ptr<std::vector<std::unique_ptr<Album>>>;
 
 private:
         QSqlDatabase& m_database;

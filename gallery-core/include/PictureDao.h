@@ -13,10 +13,10 @@ public:
         explicit PictureDao(QSqlDatabase& database);
         void init() const;
 
-        void addPictureInAlbum(int albumId, Picture& picture) const;
-        void removePicture(int id) const;
-        void removePicturesForAlbum(int albumId) const;
-        auto picturesForAlbum(int albumId) const -> std::unique_ptr<std::vector<std::unique_ptr<Picture>>>;
+        void               addPictureInAlbum(int albumId, Picture& picture) const;
+        void               removePicture(int id) const;
+        void               removePicturesForAlbum(int albumId) const;
+        [[nodiscard]] auto picturesForAlbum(int albumId) const -> std::unique_ptr<std::vector<std::unique_ptr<Picture>>>;
 
 private:
         QSqlDatabase& m_database;

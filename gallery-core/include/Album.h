@@ -10,10 +10,10 @@ class GALLERYCORE_EXPORT Album
 public:
         explicit Album(QString name = "");
 
-        int     id() const;
-        void    setId(int id);
-        QString name() const;
-        void    setName(const QString& name);
+        [[nodiscard]] int  id() const;
+        void               setId(int id);
+        [[nodiscard]] auto name() const -> QString;
+        void               setName(const QString& name);
 
 private:
         int     m_id;

@@ -25,9 +25,9 @@ public:
 
         auto addPicture(const Picture& picture) -> QModelIndex;
 
-        int  rowCount(const QModelIndex& parent = QModelIndex()) const override;
-        auto data(const QModelIndex& index, int role) const -> QVariant override;
-        auto roleNames() const -> QHash<int, QByteArray> override;
+        [[nodiscard]] int  rowCount(const QModelIndex& parent = QModelIndex()) const override;
+        [[nodiscard]] auto data(const QModelIndex& index, int role) const -> QVariant override;
+        [[nodiscard]] auto roleNames() const -> QHash<int, QByteArray> override;
 
         bool removeRows(int row, int count, const QModelIndex& parent) override;
 
@@ -42,8 +42,8 @@ private:
         int                                                    m_albumId;
         std::unique_ptr<std::vector<std::unique_ptr<Picture>>> m_pictures;
 
-        void loadPictures(int albumId);
-        bool isIndexValid(const QModelIndex& index) const;
+        void               loadPictures(int albumId);
+        [[nodiscard]] bool isIndexValid(const QModelIndex& index) const;
 };
 
 #endif  // PICTUREMODEL_H
