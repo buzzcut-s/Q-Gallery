@@ -1,10 +1,10 @@
 #include "include/PictureModel.h"
 
 PictureModel::PictureModel(const AlbumModel& albumModel, QObject* parent) :
-    QAbstractItemModel(parent),
-    m_db(DatabaseManager::instance()),
-    m_albumId(-1),
-    m_pictures(new std::vector<std::unique_ptr<Picture>>())
+    QAbstractItemModel{parent},
+    m_db{DatabaseManager::instance()},
+    m_albumId{-1},
+    m_pictures{new std::vector<std::unique_ptr<Picture>>()}
 {
         connect(&albumModel, &AlbumModel::rowsRemoved,
                 this, &PictureModel::deletePicturesForAlbum);

@@ -11,7 +11,7 @@
 #include "include/Picture.h"
 
 PictureDao::PictureDao(QSqlDatabase& database) :
-    m_database(database)
+    m_database{database}
 {
 }
 

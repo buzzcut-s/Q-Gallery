@@ -12,9 +12,9 @@ DatabaseManager& DatabaseManager::instance()
 }
 
 DatabaseManager::DatabaseManager(const QString& path) :
-    m_dataBase(new QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE"))),
-    m_albumDao(*m_dataBase),
-    m_pictureDao(*m_dataBase)
+    m_dataBase{new QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE"))},
+    m_albumDao{*m_dataBase},
+    m_pictureDao{*m_dataBase}
 {
         m_dataBase->setDatabaseName(path);
 

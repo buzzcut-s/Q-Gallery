@@ -9,7 +9,7 @@
 #include "include/DatabaseManager.h"
 
 AlbumDao::AlbumDao(QSqlDatabase& database) :
-    m_database(database)
+    m_database{database}
 {
 }
 
