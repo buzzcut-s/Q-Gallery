@@ -30,8 +30,8 @@ private:
         QSqlDatabase* m_dataBase;
 
 public:
-        const AlbumDao   albumDao;
-        const PictureDao pictureDao;
+        const AlbumDao   m_albumDao;
+        const PictureDao m_pictureDao;
 };
 
 #endif  // DATABASEMANAGER_H

@@ -13,14 +13,15 @@ DatabaseManager& DatabaseManager::instance()
 
 DatabaseManager::DatabaseManager(const QString& path) :
     m_dataBase(new QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE"))),
-    albumDao(*m_dataBase)
+    m_albumDao(*m_dataBase),
+    m_pictureDao(*m_dataBase)
 {
         m_dataBase->setDatabaseName(path);
 
         bool openStatus = m_dataBase->open();
         qDebug() << "Database connection: " << (openStatus ? "OK" : "Error");
 
-        albumDao.init();
+        m_albumDao.init();
 }
 
 DatabaseManager::~DatabaseManager()
