@@ -1,15 +1,5 @@
 #include "include/AlbumModel.h"
 
-#include <algorithm>
-#include <cstddef>
-#include <memory>
-
-#include "include/Album.h"
-#include "qhash.h"
-#include "qnamespace.h"
-#include "qobjectdefs.h"
-#include "qvariant.h"
-
 AlbumModel::AlbumModel(QObject* parent) :
     QAbstractItemModel(parent),
     m_db(DatabaseManager::instance()),
