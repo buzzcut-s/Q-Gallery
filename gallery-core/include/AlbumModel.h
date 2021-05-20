@@ -18,6 +18,12 @@ class GALLERYCORE_EXPORT AlbumModel : public QAbstractItemModel
 public:
         explicit AlbumModel(QObject* parent = nullptr);
 
+        enum Roles
+        {
+                idRole = Qt::UserRole + 1,
+                nameRole,
+        };
+
         int  rowCount(const QModelIndex& parent = QModelIndex()) const override;
         auto data(const QModelIndex& index, int role = Qt::DisplayRole) const -> QVariant override;
         auto roleNames() const -> QHash<int, QByteArray> override;
@@ -28,7 +34,7 @@ public:
         QModelIndex addAlbum(const Album& album);
 
 private:
-        bool isIndexValid(QModelIndex& index) const;
+        bool isIndexValid(const QModelIndex& index) const;
 
 private:
         DatabaseManager&                                     m_db;
