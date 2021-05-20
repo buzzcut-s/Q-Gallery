@@ -5,11 +5,12 @@
 
 #include "AlbumDao.h"
 #include "PictureDao.h"
+#include "qstringliteral.h"
 
 class QSqlDatabase;
 class QSqlQuery;
 
-const QString DATABASE_FILENAME = "gallery.db";
+const QString DATABASE_FILENAME = QStringLiteral("gallery.db");
 
 class DatabaseManager
 {
