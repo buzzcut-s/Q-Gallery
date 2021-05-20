@@ -24,14 +24,14 @@ public:
                 nameRole,
         };
 
+        auto addAlbum(const Album& album) -> QModelIndex;
+
         int  rowCount(const QModelIndex& parent = QModelIndex()) const override;
         auto data(const QModelIndex& index, int role = Qt::DisplayRole) const -> QVariant override;
         auto roleNames() const -> QHash<int, QByteArray> override;
 
         bool setData(const QModelIndex& index, const QVariant& value, int role) override;
         bool removeRows(int row, int count, const QModelIndex& parent) override;
-
-        QModelIndex addAlbum(const Album& album);
 
 private:
         DatabaseManager&                                     m_db;
