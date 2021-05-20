@@ -8,6 +8,7 @@
 
 class QSqlDatabase;
 class QSqlQuery;
+
 const QString DATABASE_FILENAME = "gallery.db";
 
 class DatabaseManager
@@ -20,6 +21,9 @@ public:
         DatabaseManager(DatabaseManager&&)      = delete;
         DatabaseManager& operator=(DatabaseManager&&) = delete;
 
+        [[nodiscard]] auto albumDao() const -> const AlbumDao&;
+        [[nodiscard]] auto pictureDao() const -> const PictureDao&;
+
         static void debugQuery(const QSqlQuery& query);
 
 protected:
@@ -27,9 +31,7 @@ protected:
         DatabaseManager& operator=(const DatabaseManager& rhs);
 
 private:
-        QSqlDatabase* m_dataBase;
-
-public:
+        QSqlDatabase*    m_dataBase;
         const AlbumDao   m_albumDao;
         const PictureDao m_pictureDao;
 };

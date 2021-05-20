@@ -30,6 +30,16 @@ DatabaseManager::~DatabaseManager()
         delete m_dataBase;
 }
 
+auto DatabaseManager::albumDao() const -> const AlbumDao&
+{
+        return m_albumDao;
+}
+
+auto DatabaseManager::pictureDao() const -> const PictureDao&
+{
+        return m_pictureDao;
+}
+
 void DatabaseManager::debugQuery(const QSqlQuery& query)
 {
         if (query.lastError().type() == QSqlError::ErrorType::NoError)
