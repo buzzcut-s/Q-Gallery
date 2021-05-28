@@ -10,7 +10,7 @@ SOURCES += \
     src/MainWindow.cpp
 
 HEADERS += \
-    include.AlbumListWidget.h \
+    include/AlbumListWidget.h \
     include/MainWindow.h
 
 FORMS += \

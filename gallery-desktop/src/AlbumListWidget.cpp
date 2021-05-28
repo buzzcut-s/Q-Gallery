@@ -1,14 +1,15 @@
-#include "AlbumListWidget.h"
+#include "include/AlbumListWidget.h"
+
 #include "ui_AlbumListWidget.h"
 
-AlbumListWidget::AlbumListWidget(QWidget *parent) :
-        QWidget(parent),
-        ui(new Ui::AlbumListWidget)
+AlbumListWidget::AlbumListWidget(QWidget* parent) :
+    QWidget{parent},
+    m_ui{new Ui::AlbumListWidget}
 {
-        ui->setupUi(this);
+        m_ui->setupUi(this);
 }
 
 AlbumListWidget::~AlbumListWidget()
 {
-        delete ui;
+        delete m_ui;
 }

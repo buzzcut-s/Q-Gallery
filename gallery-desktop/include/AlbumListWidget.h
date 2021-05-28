@@ -3,7 +3,8 @@
 
 #include <QWidget>
 
-namespace Ui {
+namespace Ui
+{
 class AlbumListWidget;
 }
 
@@ -12,11 +13,11 @@ class AlbumListWidget : public QWidget
         Q_OBJECT
 
 public:
-        explicit AlbumListWidget(QWidget *parent = nullptr);
+        explicit AlbumListWidget(QWidget* parent = nullptr);
         ~AlbumListWidget();
 
 private:
-        Ui::AlbumListWidget *ui;
+        Ui::AlbumListWidget* m_ui;
 };
 
-#endif // ALBUMLISTWIDGET_H
+#endif  // ALBUMLISTWIDGET_H
